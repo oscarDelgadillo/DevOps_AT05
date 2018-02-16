@@ -8,10 +8,9 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   
-	#config.vm.provision "shell", path: "environments.bat"
 	config.env.enable
 	config.ssh.username = 'ubuntu'
-	config.ssh.private_key_path = 'C:/Users/Administrator/Documents/DevOps/DevOps_AT05/TZ/virtualkey.pem'
+	config.ssh.private_key_path = ENV['KEY_PATH']
 	
 	
 	config.vm.provider :openstack do |os, override|
