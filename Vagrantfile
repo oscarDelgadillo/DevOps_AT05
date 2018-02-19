@@ -11,7 +11,8 @@ Vagrant.configure("2") do |config|
 	config.env.enable
 	config.ssh.username = 'ubuntu'
 	config.ssh.private_key_path = ENV['KEY_PATH']
-	
+
+	config.vm.provision "docker"
 	
 	config.vm.provider :openstack do |os, override|
 		os.identity_api_version = '3'
@@ -26,7 +27,7 @@ Vagrant.configure("2") do |config|
 		os.keypair_name 		= ENV['OS_KEY_PAIR_NAME']
 		os.server_name 			= 'oscar_virtual_pc'
 		override.vm.synced_folder '.', '/vagrant', disabled: true
-	end 
+	end
   
   #config.vm.box = "base"
 
